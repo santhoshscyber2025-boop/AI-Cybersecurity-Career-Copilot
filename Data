@@ -1,0 +1,37 @@
+[
+  {
+    "name": "SOC Analyst",
+    "level": "Beginner",
+    "description": "Monitor alerts, review logs, investigate suspicious activity, and help teams respond to security incidents.",
+    "interests": ["Networking", "Linux", "Security", "SOC", "Cloud"],
+    "skills": ["Log analysis", "SIEM basics", "Networking", "Incident reporting"]
+  },
+  {
+    "name": "Penetration Tester",
+    "level": "Intermediate",
+    "description": "Assess systems with written authorization, document weaknesses, and explain how to fix them.",
+    "interests": ["Networking", "Linux", "Programming", "Security", "Web Security"],
+    "skills": ["Linux", "Web security", "Python", "Report writing"]
+  },
+  {
+    "name": "Security Engineer",
+    "level": "Intermediate",
+    "description": "Build and maintain controls that protect applications, endpoints, networks, and cloud infrastructure.",
+    "interests": ["Networking", "Linux", "Programming", "Security", "Cloud"],
+    "skills": ["Scripting", "Identity and access", "Hardening", "Monitoring"]
+  },
+  {
+    "name": "Cloud Security Associate",
+    "level": "Beginner",
+    "description": "Learn to protect cloud identities, storage, workloads, and audit logs using secure configurations.",
+    "interests": ["Cloud", "Networking", "Security", "Programming"],
+    "skills": ["IAM", "Cloud logging", "Network rules", "Secure configuration"]
+  },
+  {
+    "name": "Application Security Learner",
+    "level": "Beginner",
+    "description": "Understand common web application risks and help developers build safer software.",
+    "interests": ["Web Security", "Programming", "Security", "Linux"],
+    "skills": ["HTTP", "OWASP Top 10", "Secure coding", "Code review"]
+  }
+]
