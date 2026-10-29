@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Cybersecurity Career Copilot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="hero">
+  <div class="badge">CAREER PLANNER · STUDENT EDITION</div>
+  <h1>AI Cybersecurity<br><span>Career Copilot</span></h1>
+  <p>Find a direction, discover the skills to build, and turn your interest in cybersecurity into a practical learning plan.</p>
+  <a class="jump" href="#planner">Build my roadmap ↓</a>
+</header>
+<main>
+  <section class="panel" id="planner">
+    <div class="section-heading">
+      <div><div class="eyebrow">01 / YOUR PROFILE</div><h2>Let’s map your next step.</h2></div>
+      <p>Select what interests you. You can change your choices any time.</p>
+    </div>
+    <form method="post">
+      <label class="field-label">Current experience</label>
+      <select name="level">
+        <option>Beginner</option><option>Intermediate</option><option>Advanced</option><option>Any</option>
+      </select>
+      <label class="field-label">What sounds interesting? <span>(choose any)</span></label>
+      <div class="choices">
+        {% for group, skills in skill_groups.items() %}
+        <label class="choice"><input type="checkbox" name="interests" value="{{ group }}"><span><b>{{ group }}</b><small>{{ skills[:3] | join(" · ") }}</small></span></label>
+        {% endfor %}
+      </div>
+      <label class="field-label" for="goal">Your goal <span>(optional)</span></label>
+      <input id="goal" name="goal" placeholder="e.g. Find my first cybersecurity internship">
+      <button type="submit">Generate my career plan <span>↗</span></button>
+    </form>
+  </section>
+
+  {% if result %}
+  <section class="results">
+    <div class="eyebrow">02 / YOUR STARTING POINT</div>
+    <h2>Your career plan</h2>
+    {% if result.goal %}<p class="goal">Your goal: “{{ result.goal }}”</p>{% endif %}
+    <div class="role-grid">
+      {% for role in result.recommendations %}
+      <article class="role-card">
+        <div class="role-top"><span class="role-tag">{{ role.level }}</span><span class="number">0{{ loop.index }}</span></div>
+        <h3>{{ role.name }}</h3><p>{{ role.description }}</p>
+        <div class="mini-label">CORE SKILLS</div>
+        <div class="tags">{% for skill in role.skills %}<span>{{ skill }}</span>{% endfor %}</div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="roadmap-box">
+      <div class="eyebrow">03 / ACTION PLAN</div><h2>Your 8-week roadmap</h2>
+      <div class="timeline">
+        {% for item in result.roadmap %}
+        <div class="step"><div class="week">{{ item.week }}</div><div><h3>{{ item.title }}</h3><p>{{ item.task }}</p></div></div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="safety-note"><b>Ethical rule:</b> Practice only on systems you own or have explicit permission to test. Use intentionally vulnerable labs and legal CTF platforms.</div>
+    <button class="print" onclick="window.print()">Print / Save as PDF</button>
+  </section>
+  {% endif %}
+  <section class="info">
+    <div><div class="eyebrow">WHY THIS PROJECT?</div><h2>A practical starting point, not a magic answer.</h2></div>
+    <p>This prototype uses a transparent rule-based recommendation engine. It is designed as a student project and does not claim to be a trained AI model. You can later connect a language model, add saved profiles, quizzes, course links, and progress tracking.</p>
+  </section>
+</main>
+<footer>AI Cybersecurity Career Copilot <span>Built for learning · Use security skills responsibly</span></footer>
+</body>
+</html>
